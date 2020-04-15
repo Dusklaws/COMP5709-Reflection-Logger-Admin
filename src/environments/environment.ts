@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  googleClientId: '987550392665-uqrg4tu7rp25cq44ipuodlm5eiigtune.apps.googleusercontent.com',
+  apiBaseUrl: 'https://asia-northeast1-reflectionlogger-naigbo.cloudfunctions.net'
 };
 
 /*

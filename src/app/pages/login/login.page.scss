@@ -1,0 +1,33 @@
+@import './src/styles';
+
+.login-page {
+  width: 100%;
+  height: 100%;
+  background: rgb(13, 71, 161);
+  background: radial-gradient(circle, rgba(13, 71, 161, 1) 0%, rgba(13, 41, 161, 1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-card {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &-main-content {
+      width: 230px;
+      text-align: center;
+    }
+
+    &-button {
+      width: 230px;
+
+      &-image {
+        width: 16px;
+        margin-left: 10px;
+      }
+    }
+  }
+}

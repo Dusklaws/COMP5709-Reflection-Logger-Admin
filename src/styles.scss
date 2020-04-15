@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@include mat-core();
+
+$comp5709-reflection-logger-admin-primary: mat-palette($mat-blue, 900);
+$comp5709-reflection-logger-admin-accent: mat-palette($mat-grey, 600, 700, 900);
+
+$comp5709-reflection-logger-admin-warn: mat-palette($mat-red);
+
+$comp5709-reflection-logger-admin-theme: mat-light-theme($comp5709-reflection-logger-admin-primary, $comp5709-reflection-logger-admin-accent, $comp5709-reflection-logger-admin-warn);
+
+@include angular-material-theme($comp5709-reflection-logger-admin-theme);
