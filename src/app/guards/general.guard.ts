@@ -19,11 +19,9 @@ export class GeneralGuard implements CanActivate {
 
     private async checkAccess(): Promise<boolean> {
         if (await this.authService.isUserSignedIn()) {
-            if (!this.authService.user) {
-                if (!this.authService.updateUser) {
-                    this.authService.signOut();
-                    return this.router.navigate(['/login']);
-                }
+            if (!(await this.authService.updateUser())) {
+                this.authService.signOut();
+                return this.router.navigate(['/login']);
             }
             return true;
         }

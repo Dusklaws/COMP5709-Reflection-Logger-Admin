@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-toolbar',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
     styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
+    @Input() title: string;
 
+    constructor(private readonly authService: AuthService) { }
+
+    public async logout() {
+        await this.authService.signOut();
+    }
 }

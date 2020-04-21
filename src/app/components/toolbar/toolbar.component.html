@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <span>Custom Toolbar</span>
+    <mat-toolbar-row class="tool-bar">
+        <span>{{title}}</span>
+        <span class="tool-bar-spacer"></span>
+        <span (click)="logout()" class="tool-bar-log-out-icon"><i class="material-icons">keyboard_return</i></span>
     </mat-toolbar-row>
 </mat-toolbar>
+

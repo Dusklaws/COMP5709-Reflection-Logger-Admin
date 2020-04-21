@@ -1,0 +1,19 @@
+.student-page {
+  width: 90%;
+  margin: 50px auto;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+
+  &-card {
+    max-width: 400px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+
+    &-button {
+        margin: auto;
+        width: 400px;
+    }
+  }
+}

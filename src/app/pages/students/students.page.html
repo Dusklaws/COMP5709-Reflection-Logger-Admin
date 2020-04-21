@@ -1,1 +1,19 @@
-This is a student page
+<app-toolbar [title]="'Students'"></app-toolbar>
+<div class="student-page">
+    <ng-container *ngFor="let student of students">
+        <mat-card class="student-page-card">
+            <mat-card-header>
+                <mat-card-title>{{student.name}}</mat-card-title>
+                <mat-card-subtitle>{{student.email}}</mat-card-subtitle>
+            </mat-card-header>
+            <ng-container *ngIf="student.history && student.history.length > 0">
+                <app-barchart [history]="student.history"></app-barchart>
+            </ng-container>            
+            <mat-card-content>
+                <button mat-raised-button color="primary" class="student-page-card-button">
+                    View Logs
+                </button>
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
+</div>

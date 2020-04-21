@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginGuard } from './guards/login.guard';
 import { GeneralGuard } from './guards/general.guard';
-import { SecuredGuard } from './guards/secured.guard';
 import { LoginPageComponent } from './pages/login/login.page';
 import { StudentsPageComponent } from './pages/students/students.page';
 import { CalendarPageComponent } from './pages/calendar/calendar.page';
@@ -24,7 +23,7 @@ const routes: Routes = [
   {
     path: 'students',
     component: StudentsPageComponent,
-    canActivate: [GeneralGuard, SecuredGuard]
+    canActivate: [GeneralGuard]
   },
   {
     path: 'journals',

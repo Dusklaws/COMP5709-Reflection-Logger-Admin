@@ -51,6 +51,7 @@ export class AuthService {
         await this.googleAuth.signIn({ scope: 'profile email' });
         await this.updateUser();
         if (this.user) {
+            console.log('afds');
             await this.ngZone.run(() => this.router.navigate(['/students']));
         }
     }
@@ -67,6 +68,10 @@ export class AuthService {
     }
 
     public async updateUser(): Promise<User> {
+        if (this.user) {
+            return this.user;
+        }
+
         try {
             this.user = await this.httpClient.post<User>(
                 this.authUrl,

@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +14,7 @@ import { LoginPageComponent } from './pages/login/login.page';
 import { StudentsPageComponent } from './pages/students/students.page';
 import { CalendarPageComponent } from './pages/calendar/calendar.page';
 import { JournalsPageComponent } from './pages/journals/journals.page';
-
+import { BarchartComponent } from './components/barchart/barchart.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { JournalsPageComponent } from './pages/journals/journals.page';
     StudentsPageComponent,
     CalendarPageComponent,
     JournalsPageComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    BarchartComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { JournalsPageComponent } from './pages/journals/journals.page';
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
