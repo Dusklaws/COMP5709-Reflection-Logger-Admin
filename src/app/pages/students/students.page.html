@@ -10,7 +10,7 @@
                 <app-barchart [history]="student.history"></app-barchart>
             </ng-container>            
             <mat-card-content>
-                <button mat-raised-button color="primary" class="student-page-card-button">
+                <button mat-raised-button color="primary" class="student-page-card-button"  [routerLink]="'/journals/' + student.email">
                     View Logs
                 </button>
             </mat-card-content>

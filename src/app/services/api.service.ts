@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { environment } from 'src/environments/environment';
 import { User } from '../typings/user';
+import { Log } from '../typings/log';
 
 @Injectable({
     providedIn: 'root'
@@ -21,7 +22,11 @@ export class ApiServce {
         return this.get<User[]>('students');
     }
 
-    private async get<T>(urlSuffix: string, ): Promise<T> {
+    public async getLogs(email: string): Promise<Log[]> {
+        return this.post<Log[]>('logs', { email });
+    }
+
+    private async get<T>(urlSuffix: string): Promise<T> {
         await this.authService.updateUser();
         return this.httpClient.get<T>(
             `${this.apiUrl}/${urlSuffix}`,
@@ -29,6 +34,18 @@ export class ApiServce {
                 headers: {
                     GoogleIdToken: this.authService.getGoogleIdToken().googleIdToken
                 }
+            }
+        ).toPromise();
+    }
+
+    private async post<T>(urlSuffix: string, body: any): Promise<T> {
+        await this.authService.updateUser();
+        return this.httpClient.post<T>(
+            `${this.apiUrl}/${urlSuffix}`, body,
+            {
+                headers: {
+                    GoogleIdToken: this.authService.getGoogleIdToken().googleIdToken
+                },
             }
         ).toPromise();
     }

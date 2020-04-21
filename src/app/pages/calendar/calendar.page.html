@@ -1,2 +1,15 @@
-<app-toolbar></app-toolbar>
-This is a calendar page
+<app-toolbar [title]="'Logs'" [back]="'/students'"></app-toolbar>
+<div class="calendar-page">
+
+    <div class="alert alert-info">
+        Click on a day or time slot on the view.
+        <strong *ngIf="clickedDate">You clicked on this time: {{ clickedDate | date:'medium' }}</strong>
+        <strong *ngIf="clickedColumn != null">You clicked on this column: {{ clickedColumn }}</strong>
+    </div>
+
+    <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" [refresh]="refresh"
+        (columnHeaderClicked)="clickedColumn = $event.isoDayNumber" (dayClicked)="clickedDate = $event.day.date">
+    </mwl-calendar-month-view>
+
+
+</div>

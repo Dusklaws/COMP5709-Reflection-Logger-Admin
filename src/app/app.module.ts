@@ -14,7 +14,9 @@ import { LoginPageComponent } from './pages/login/login.page';
 import { StudentsPageComponent } from './pages/students/students.page';
 import { CalendarPageComponent } from './pages/calendar/calendar.page';
 import { JournalsPageComponent } from './pages/journals/journals.page';
-import { BarchartComponent } from './components/barchart/barchart.component'
+import { BarchartComponent } from './components/barchart/barchart.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns'
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { BarchartComponent } from './components/barchart/barchart.component'
     MatCardModule,
     MatButtonModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]

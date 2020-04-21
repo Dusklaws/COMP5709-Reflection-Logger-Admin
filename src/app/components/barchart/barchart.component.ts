@@ -46,7 +46,7 @@ export class BarchartComponent implements OnInit {
             for (const h of this.history) {
                 chartData.data.push(h.rating);
                 const date = (new Date(h.date));
-                const label = `${date.getDate()}/${date.getMonth()}`;
+                const label = `${date.getDate()}/${date.getMonth() + 1}`;
                 this.barChartLabels.push(label);
             }
             this.barChartData.push(chartData);

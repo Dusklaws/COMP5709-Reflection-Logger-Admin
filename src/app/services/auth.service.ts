@@ -51,7 +51,6 @@ export class AuthService {
         await this.googleAuth.signIn({ scope: 'profile email' });
         await this.updateUser();
         if (this.user) {
-            console.log('afds');
             await this.ngZone.run(() => this.router.navigate(['/students']));
         }
     }

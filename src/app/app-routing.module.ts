@@ -26,18 +26,19 @@ const routes: Routes = [
     canActivate: [GeneralGuard]
   },
   {
-    path: 'journals',
+    path: 'journals/:email',
     component: CalendarPageComponent,
     canActivate: [GeneralGuard]
   },
   {
-    path: 'journals/:logId',
+    path: 'journals/:email/:logId',
     component: JournalsPageComponent,
     canActivate: [GeneralGuard]
   },
   {
     path: '**',
-    component: StudentsPageComponent
+    component: StudentsPageComponent,
+    canActivate: [GeneralGuard]
   }
 ];
 
