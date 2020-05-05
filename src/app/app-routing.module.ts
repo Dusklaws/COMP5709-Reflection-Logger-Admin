@@ -6,7 +6,7 @@ import { GeneralGuard } from './guards/general.guard';
 import { LoginPageComponent } from './pages/login/login.page';
 import { StudentsPageComponent } from './pages/students/students.page';
 import { CalendarPageComponent } from './pages/calendar/calendar.page';
-import { JournalsPageComponent } from './pages/journals/journals.page';
+import { LogPageComponent } from './pages/log/log.page';
 
 
 const routes: Routes = [
@@ -26,13 +26,13 @@ const routes: Routes = [
     canActivate: [GeneralGuard]
   },
   {
-    path: 'journals/:email',
+    path: 'logs/:email',
     component: CalendarPageComponent,
     canActivate: [GeneralGuard]
   },
   {
-    path: 'journals/:email/:logId',
-    component: JournalsPageComponent,
+    path: 'log/:submissionTime',
+    component: LogPageComponent,
     canActivate: [GeneralGuard]
   },
   {

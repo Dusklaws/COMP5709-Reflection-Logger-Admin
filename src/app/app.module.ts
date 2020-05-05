@@ -1,43 +1,45 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { ChartsModule } from 'ng2-charts';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list/';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BarchartComponent } from './components/barchart/barchart.component';
+import { CalendarPageComponent } from './pages/calendar/calendar.page';
+import { LogPageComponent } from './pages/log/log.page';
 import { LoginPageComponent } from './pages/login/login.page';
 import { StudentsPageComponent } from './pages/students/students.page';
-import { CalendarPageComponent } from './pages/calendar/calendar.page';
-import { JournalsPageComponent } from './pages/journals/journals.page';
-import { BarchartComponent } from './components/barchart/barchart.component';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns'
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatButtonModule,
+    ChartsModule,
+    MatListModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
+  ],
   declarations: [
     AppComponent,
     LoginPageComponent,
     StudentsPageComponent,
     CalendarPageComponent,
-    JournalsPageComponent,
+    LogPageComponent,
     ToolbarComponent,
-    BarchartComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatButtonModule,
-    HttpClientModule,
-    ChartsModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
+    BarchartComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

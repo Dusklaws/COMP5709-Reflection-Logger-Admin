@@ -1,6 +1,6 @@
 .student-page {
   width: 90%;
-  margin: 50px auto;
+  margin: 20px auto;
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
@@ -8,8 +8,8 @@
 
   &-card {
     max-width: 400px;
-    margin-right: 50px;
-    margin-bottom: 50px;
+    margin-left: 100px;
+    margin-bottom: 20px;
 
     &-button {
         margin: auto;

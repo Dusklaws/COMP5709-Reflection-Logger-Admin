@@ -1,0 +1,36 @@
+.log-page {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  width: 50%;
+
+  &-summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-card {
+      width: 250px;
+      height: 100px;
+      text-align: center;
+      align-content: space-around;
+
+      &-title {
+        text-decoration: underline;
+      }
+
+      &-content {
+        margin: 25px 0 0;
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+    }
+  }
+
+  &-general {
+    &-card {
+      margin: 20px 0;
+    }
+  }
+}

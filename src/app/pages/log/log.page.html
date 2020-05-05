@@ -1,0 +1,77 @@
+<app-toolbar
+    [title]="title"
+    [back]="'/logs/' + log.email"
+></app-toolbar>
+<div class="log-page">
+    <div class="log-page-summary">
+        <mat-card class="log-page-summary-card">
+            <mat-card-title class="log-page-summary-card-title">Date</mat-card-title>
+            <mat-card-content class="log-page-summary-card-content">
+                <p>
+                    {{ log.submissionTime |  date: 'MMMM d' }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="log-page-summary-card">
+            <mat-card-title class="log-page-summary-card-title">Daily Rating</mat-card-title>
+            <mat-card-content class="log-page-summary-card-content">
+                <p>{{ log.dailyRating }}/10</p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="log-page-summary-card">
+            <mat-card-title class="log-page-summary-card-title">Daily Summary</mat-card-title>
+            <mat-card-content class="log-page-summary-card-content">
+                <p>{{ log.dailySummary }}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="log-page-general">
+        <mat-card class="log-page-general-card">
+            <mat-card-title class="log-page-general-card-title">Internship Status</mat-card-title>
+            <mat-card-content>
+                <h2>Employer name:</h2>
+                <p>
+                    {{ log.generalReportingParameters.employeeName }}
+                </p>
+            </mat-card-content>
+            <mat-card-content>
+                <h2>Internship duration:</h2>
+                <p>
+                    {{ log.generalReportingParameters.startDate | date: 'MMMM d'}} to {{ log.generalReportingParameters.endDate | date: 'MMMM d' }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="log-page-general-card">
+            <mat-card-title class="log-page-general-card-title">Technology Used</mat-card-title>
+            <mat-card-content>
+                <h2>
+                    Are you getting the task you aplied for?
+                </h2>
+                <p>
+                    {{ log.technologyReportingParameters.isTaskTechnical }}
+                </p>
+            </mat-card-content>
+            <mat-card-content>
+                <h2>Type of assigned tasks:</h2>
+                <p>
+                    {{ log.technologyReportingParameters.task }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="log-page-general-card">
+            <mat-card-title class="log-page-general-card-title">Issues</mat-card-title>
+            <mat-card-content>
+                <h2>Issues at workplace:</h2>
+                <p>
+                    {{ log.issueReportingParameters.generalIssue }}
+                </p>
+            </mat-card-content>
+            <mat-card-content>
+                <h2>General issues or comments:</h2>
+                <p>
+                    {{ log.issueReportingParameters.workPlaceIssue }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
