@@ -18,6 +18,11 @@ export class StudentsPageComponent implements OnInit {
     public async ngOnInit(): Promise<void> {
         this.students = await this.apiService.getListOfStudents();
     }
-
+    public async removeHelp(studentEmail: any) {
+        const student = this.students.find(s => s.email === studentEmail);
+        student.helpRequested = false;
+        window.open(`mailto:${studentEmail}`);
+        await this.apiService.removeHelp(studentEmail);
+    }
 
 }

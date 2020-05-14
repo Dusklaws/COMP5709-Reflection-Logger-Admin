@@ -2,23 +2,60 @@
 <div class="student-page">
     <ng-container *ngFor="let student of students">
         <mat-card class="student-page-card">
-            <mat-card-header>
+            <mat-card-header class="student-page-card-header">
                 <mat-card-title>{{student.name}}</mat-card-title>
                 <mat-card-subtitle>{{student.email}}</mat-card-subtitle>
+                <mat-chip-list class="student-page-card-header-tags">
+                    <mat-chip
+                        *ngIf="student.helpRequested"
+                        class="student-page-card-header-tags-red"
+                        [removable]="true"
+                        (removed)="removeHelp(student.email)"
+                    >
+                        Help Requested
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                        <!-- <i class="material-icons student-page-card-header-tags-cancel">cancel</i> -->
+                    </mat-chip>
+                    <mat-chip [ngClass]="
+                        {
+                            'student-page-card-header-tags-green': student.average > 6,
+                            'student-page-card-header-tags-yellow': student.average <= 6 && student.average >= 4,
+                            'student-page-card-header-tags-red': student.average < 4
+                        }
+                    ">{{ student.average | number :'1.1-1'}}</mat-chip>
+                </mat-chip-list>
             </mat-card-header>
             <ng-container *ngIf="student.history && student.history.length > 0">
-                <app-barchart [history]="student.history"></app-barchart>
+                <app-chart [history]="student.history"></app-chart>
             </ng-container>
-            <mat-card-content>
-                <button
-                    mat-raised-button
-                    color="primary"
-                    class="student-page-card-button"
-                    [routerLink]="'/logs/' + student.email"
-                >
-                    View Logs
-                </button>
+            <mat-card-content class="student-page-card-content">
+                <div class="student-page-card-content-column">
+                    <span class="student-page-card-content-header">Supervisor</span>
+                    <span class="student-page-card-content-text">
+                        {{student.internshipDetails.employeeName}}
+                    </span>
+                </div>
+                <div class="student-page-card-content-column">
+                    <span class="student-page-card-content-header">Period</span>
+                    <span class="student-page-card-content-text">
+                        {{student.internshipDetails.startDate | date: 'd/M'}} - {{student.internshipDetails.endDate | date: 'd/M'}}
+                    </span>
+                </div>
             </mat-card-content>
+            <mat-card-content class="student-page-card-content">
+                <div class="student-page-card-content-column">
+                    <span class="student-page-card-content-header">Last Summary</span>
+                    <span class="student-page-card-content-text">{{student.latestSummary}}</span>
+                </div>
+            </mat-card-content>
+            <button
+                mat-raised-button
+                color="primary"
+                class="student-page-card-button"
+                [routerLink]="'/logs/' + student.email"
+            >
+                View Logs
+            </button>
         </mat-card>
     </ng-container>
 </div>

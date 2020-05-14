@@ -12,12 +12,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BarchartComponent } from './components/barchart/barchart.component';
+import { ChartComponent } from './components/barchart/chart.component';
 import { CalendarPageComponent } from './pages/calendar/calendar.page';
 import { LogPageComponent } from './pages/log/log.page';
 import { LoginPageComponent } from './pages/login/login.page';
 import { StudentsPageComponent } from './pages/students/students.page';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -30,6 +32,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     MatButtonModule,
     ChartsModule,
     MatListModule,
+    MatChipsModule,
+    MatIconModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   declarations: [
@@ -39,7 +43,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     CalendarPageComponent,
     LogPageComponent,
     ToolbarComponent,
-    BarchartComponent,
+    ChartComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,7 +11,7 @@ import { Log } from '../typings/log';
     providedIn: 'root'
 })
 export class ApiServce {
-    private readonly apiUrl: string = environment.apiBaseUrl;
+    private readonly apiUrl: string = environment.apiBaseUrl + 'api';
 
     constructor(
         private readonly httpClient: HttpClient,
@@ -22,8 +22,12 @@ export class ApiServce {
         return this.get<User[]>('students');
     }
 
+    public async removeHelp(email: string): Promise<void> {
+        return this.get<void>(`students/${email}/remove_help`);
+    }
+
     public async getLogs(email: string): Promise<Log[]> {
-        return this.post<Log[]>('logs', { email });
+        return this.get<Log[]>('logs/' + email);
     }
 
     private async get<T>(urlSuffix: string): Promise<T> {

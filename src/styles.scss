@@ -12,6 +12,8 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+$break-tablet: 1024px;
+$break-phone: 425px;
 
 @include mat-core();
 
