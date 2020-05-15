@@ -20,6 +20,9 @@ import { StudentsPageComponent } from './pages/students/students.page';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   imports: [
@@ -34,6 +37,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatListModule,
     MatChipsModule,
     MatIconModule,
+    MatInputModule,
+    MatSliderModule,
+    MatSlideToggleModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   declarations: [
