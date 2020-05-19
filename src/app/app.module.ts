@@ -9,10 +9,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list/';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ChartComponent } from './components/barchart/chart.component';
+import { ChartComponent } from './components/chart/chart.component';
+import { LoadingComponent } from './components/loading/loading.component';
 import { CalendarPageComponent } from './pages/calendar/calendar.page';
 import { LogPageComponent } from './pages/log/log.page';
 import { LoginPageComponent } from './pages/login/login.page';
@@ -23,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -30,6 +33,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,
@@ -40,6 +44,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatInputModule,
     MatSliderModule,
     MatSlideToggleModule,
+    MatProgressSpinnerModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   declarations: [
@@ -50,6 +55,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     LogPageComponent,
     ToolbarComponent,
     ChartComponent,
+    LoadingComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

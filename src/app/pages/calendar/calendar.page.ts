@@ -4,23 +4,21 @@ import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 
 import { Log } from '../../typings/log';
-import { Subject } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
     selector: 'app-calendar',
     templateUrl: './calendar.page.html',
-    styleUrls: ['./calendar.page.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styleUrls: ['./calendar.page.scss']
 })
 export class CalendarPageComponent implements OnInit {
 
+    public isPageReady = false;
     public email: string;
     public logs: Log[];
 
     public events: CalendarEvent[] = [];
     public viewDate: Date = new Date();
-    public refresh: Subject<any> = new Subject();
 
     constructor(
         private readonly apiService: ApiServce,
@@ -34,12 +32,18 @@ export class CalendarPageComponent implements OnInit {
         for (const log of this.logs) {
             this.events.push({
                 start: new Date(log.submissionTime),
-                title: `Daily rating: ${log.dailyRating}`,
+                title: log.studentType,
+                meta: {
+                    dailyRating: log.dailyRating,
+                    dailySummary: log.dailySummary,
+                    submissionTime: log.submissionTime
+                },
                 id: log.submissionTime
             });
         }
-        this.refresh.next();
         this.dataService.initLogs(this.logs);
+        this.isPageReady = true;
     }
+
 
 }

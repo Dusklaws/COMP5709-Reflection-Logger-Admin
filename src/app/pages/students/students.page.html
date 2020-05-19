@@ -1,5 +1,8 @@
 <app-toolbar [title]="'Dashboard'"></app-toolbar>
-<div class="student-page">
+<div
+    class="student-page"
+    *ngIf="isPageReady else loading"
+>
     <div class="student-page-container">
         <mat-card class="student-page-container-card">
             <form class="student-page-container-card-form">
@@ -8,6 +11,9 @@
                         <mat-label>Search Student</mat-label>
                         <input
                             matInput
+                            name="nameFilter"
+                            [(ngModel)]="nameFilter"
+                            (ngModelChange)="filterStudents()"
                             placeholder="Name or email"
                         >
                     </mat-form-field>
@@ -18,6 +24,9 @@
                         <div>
                             0
                             <mat-slider
+                                name="minFilter"
+                                [(ngModel)]="minFilter"
+                                (ngModelChange)="filterStudents()"
                                 thumbLabel
                                 min="1"
                                 max="10"
@@ -33,6 +42,9 @@
                             0
                             <mat-slider
                                 thumbLabel
+                                name="maxFilter"
+                                [(ngModel)]="maxFilter"
+                                (ngModelChange)="filterStudents()"
                                 min="1"
                                 max="10"
                                 step="1"
@@ -43,7 +55,13 @@
                     </div>
                 </div>
                 <div class="student-page-container-card-form-field">
-                    <mat-slide-toggle>Help Requested</mat-slide-toggle>
+                    <mat-slide-toggle
+                        name="helpFilter"
+                        [(ngModel)]="helpFilter"
+                        (ngModelChange)="filterStudents()"
+                    >
+                        Help Requested Only
+                    </mat-slide-toggle>
                 </div>
             </form>
         </mat-card>
@@ -63,12 +81,11 @@
                         >
                             Help Requested
                             <mat-icon matChipRemove>cancel</mat-icon>
-                            <!-- <i class="material-icons student-page-grid-card-header-tags-cancel">cancel</i> -->
                         </mat-chip>
                         <mat-chip [ngClass]="
                         {
-                            'student-page-grid-card-header-tags-green': student.average > 6,
-                            'student-page-grid-card-header-tags-yellow': student.average <= 6 && student.average >= 4,
+                            'student-page-grid-card-header-tags-green': student.average > 7,
+                            'student-page-grid-card-header-tags-yellow': student.average <= 7 && student.average >= 4,
                             'student-page-grid-card-header-tags-red': student.average < 4
                         }
                     ">{{ student.average | number :'1.1-1'}}</mat-chip>
@@ -79,13 +96,13 @@
                 </ng-container>
                 <mat-card-content class="student-page-grid-card-content">
                     <div class="student-page-grid-card-content-column">
-                        <span class="student-page-grid-card-content-header">Supervisor</span>
+                        <span class="student-page-grid-card-content-header">Client:</span>
                         <span class="student-page-grid-card-content-text">
                             {{student.internshipDetails.employeeName}}
                         </span>
                     </div>
                     <div class="student-page-grid-card-content-column">
-                        <span class="student-page-grid-card-content-header">Period</span>
+                        <span class="student-page-grid-card-content-header">Period:</span>
                         <span class="student-page-grid-card-content-text">
                             {{student.internshipDetails.startDate | date: 'd/M'}} - {{student.internshipDetails.endDate | date: 'd/M'}}
                         </span>
@@ -93,7 +110,7 @@
                 </mat-card-content>
                 <mat-card-content class="student-page-grid-card-content">
                     <div class="student-page-grid-card-content-column">
-                        <span class="student-page-grid-card-content-header">Last Summary</span>
+                        <span class="student-page-grid-card-content-header">Lastest Summary:</span>
                         <span class="student-page-grid-card-content-text">{{student.latestSummary}}</span>
                     </div>
                 </mat-card-content>
@@ -109,3 +126,6 @@
         </ng-container>
     </div>
 </div>
+<ng-template #loading>
+    <app-loading [loadingText]="'Fetching Students. Please wait...'"></app-loading>
+</ng-template>

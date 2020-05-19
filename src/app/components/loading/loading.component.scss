@@ -1,0 +1,13 @@
+.loading-page {
+  width: 100%;
+  justify-content: center;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &-spinner {
+    margin-bottom: 100px;
+  }
+}

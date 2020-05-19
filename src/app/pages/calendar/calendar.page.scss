@@ -1,24 +1,89 @@
+@import '../../../styles.scss';
+
 .calendar-page {
-  width: 80%;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  width: 85%;
+  margin: 40px auto 0;
 
-  &-button-group {
-    display: flex;
-    margin: 0 0 50px;
-    justify-content: space-between;
-  }
-
-  &-button {
-    min-width: 150px;
-    border-radius: 5px;
-  }
-
-  &-cell {
-    margin: 0 15px 15px;
+  &-monitor {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: $break-tablet) {
+      display: none;
+    }
+
+    &-header {
+      display: flex;
+      margin: 0 0 50px;
+      justify-content: space-between;
+
+      &-button {
+        min-width: 150px;
+        border-radius: 5px;
+      }
+    }
+
+    &-calendar-cell {
+      margin: 0 15px 15px;
+      display: flex;
+      flex-direction: column;
+
+      &-content {
+        color: #8c8c8c;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 200px;
+      }
+
+      &-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+      }
+    }
+  }
+
+  &-mobile {
+    @media screen and (min-width: $break-tablet) {
+      display: none;
+    }
+
+    &-card {
+      &-header {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &-content {
+        &-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+}
+
+
+.tags {
+  &-red {
+    background-color: #ff4d4d !important;
+    color: white !important;
+  }
+
+  &-green {
+    background-color: #00e673 !important;
+    color: white !important;
+  }
+
+  &-yellow {
+    background-color: #ffc508 !important;
+    color: white !important;
+  }
+
+  @media screen and (max-width: $break-tablet) {
+    margin: -5px 0 5px 10px;
   }
 }
