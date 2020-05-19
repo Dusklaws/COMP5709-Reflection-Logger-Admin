@@ -4,7 +4,7 @@ import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 
 import { Log } from '../../typings/log';
-import { DataService } from 'src/app/services/data.service';
+import { LogDataService } from 'src/app/services/logData.service';
 
 @Component({
     selector: 'app-calendar',
@@ -21,14 +21,13 @@ export class CalendarPageComponent implements OnInit {
     public viewDate: Date = new Date();
 
     constructor(
-        private readonly apiService: ApiServce,
         private readonly route: ActivatedRoute,
-        private readonly dataService: DataService
+        private readonly dataService: LogDataService
     ) { }
 
     public async ngOnInit(): Promise<void> {
         this.email = this.route.snapshot.paramMap.get('email');
-        this.logs = await this.apiService.getLogs(this.email);
+        this.logs = await this.dataService.getAllLogs(this.email);
         for (const log of this.logs) {
             this.events.push({
                 start: new Date(log.submissionTime),
@@ -44,6 +43,4 @@ export class CalendarPageComponent implements OnInit {
         this.dataService.initLogs(this.logs);
         this.isPageReady = true;
     }
-
-
 }

@@ -1,36 +1,113 @@
+@import '../../../styles.scss';
+
 .log-page {
   display: flex;
   flex-direction: column;
-  margin: 20px auto;
+  margin: 30px auto;
   width: 50%;
+
+  @media screen and (max-width: $break-laptop) {
+    width: 75%;
+  }
 
   &-summary {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
+    @media screen and (max-width: $break-laptop) {
+      flex-direction: column;
+    }
+
     &-card {
-      width: 250px;
+      width: 225px;
       height: 100px;
       text-align: center;
-      align-content: space-around;
+      align-content: space-between;
+      overflow: hidden;
+
+      @media screen and (max-width: $break-laptop) {
+        width: 90%;
+        margin: 10px auto;
+      }
 
       &-title {
-        text-decoration: underline;
+        color: grey;
       }
 
       &-content {
         margin: 25px 0 0;
-        font-size: 2em;
-        font-weight: bold;
+        font-size: 1.5em;
       }
-
     }
   }
 
   &-general {
+    margin-top: 20px;
+
     &-card {
-      margin: 20px 0;
+      margin: 20px auto;
+
+      &-title {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        background: #0d47a1;
+        border-radius: 20px 20px 0 0;
+        font-size: 1em;
+        color: white;
+      }
+
+
+      &-main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: 0 0 20px 20px;
+
+        @media screen and (max-width: $break-laptop) {
+          flex-direction: column;
+        }
+
+        &-column {
+          flex-grow: 1;
+          text-align: center;
+
+          @media screen and (max-width: $break-laptop) {
+            padding: 20px 0;
+          }
+
+          &-header {
+            color: grey;
+          }
+
+          &-content-big {
+            font-size: 1.5em;
+          }
+
+          &-content-normal {
+            text-align: start;
+            max-width: 300px;
+            margin: 20px auto;
+          }
+
+          &-content-chips {
+            display: flex;
+            justify-content: center;
+            height: 50%;
+          }
+
+          &-seperator {
+            flex: 1;
+            max-width: 0px;
+            border: 0.5px #efefef solid;
+
+            @media screen and (max-width: $break-laptop) {
+              max-width: unset;
+            }
+          }
+        }
+      }
     }
   }
 }

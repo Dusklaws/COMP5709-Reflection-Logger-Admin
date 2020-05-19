@@ -1,77 +1,115 @@
 <app-toolbar
     [title]="title"
-    [back]="'/logs/' + log.email"
+    [back]="'/logs/' + email"
 ></app-toolbar>
-<div class="log-page">
+<div
+    class="log-page"
+    *ngIf="isPageReady else loading"
+>
     <div class="log-page-summary">
         <mat-card class="log-page-summary-card">
-            <mat-card-title class="log-page-summary-card-title">Date</mat-card-title>
+            <p class="log-page-summary-card-title">Submitted On:</p>
             <mat-card-content class="log-page-summary-card-content">
                 <p>
-                    {{ log.submissionTime |  date: 'MMMM d' }}
+                    {{ log.submissionTime |  date: 'MMMM d h:mm a' }}
                 </p>
             </mat-card-content>
         </mat-card>
         <mat-card class="log-page-summary-card">
-            <mat-card-title class="log-page-summary-card-title">Daily Rating</mat-card-title>
+            <p class="log-page-summary-card-title">Daily Rating:</p>
             <mat-card-content class="log-page-summary-card-content">
                 <p>{{ log.dailyRating }}/10</p>
             </mat-card-content>
         </mat-card>
         <mat-card class="log-page-summary-card">
-            <mat-card-title class="log-page-summary-card-title">Daily Summary</mat-card-title>
+            <p class="log-page-summary-card-title">Daily Summary:</p>
             <mat-card-content class="log-page-summary-card-content">
                 <p>{{ log.dailySummary }}</p>
             </mat-card-content>
         </mat-card>
     </div>
     <div class="log-page-general">
-        <mat-card class="log-page-general-card">
-            <mat-card-title class="log-page-general-card-title">Internship Status</mat-card-title>
-            <mat-card-content>
-                <h2>Employer name:</h2>
-                <p>
-                    {{ log.generalReportingParameters.employeeName }}
-                </p>
-            </mat-card-content>
-            <mat-card-content>
-                <h2>Internship duration:</h2>
-                <p>
-                    {{ log.generalReportingParameters.startDate | date: 'MMMM d'}} to {{ log.generalReportingParameters.endDate | date: 'MMMM d' }}
-                </p>
-            </mat-card-content>
-        </mat-card>
-        <mat-card class="log-page-general-card">
-            <mat-card-title class="log-page-general-card-title">Technology Used</mat-card-title>
-            <mat-card-content>
-                <h2>
-                    Are you getting the task you aplied for?
-                </h2>
-                <p>
-                    {{ log.technologyReportingParameters.isTaskTechnical }}
-                </p>
-            </mat-card-content>
-            <mat-card-content>
-                <h2>Type of assigned tasks:</h2>
-                <p>
-                    {{ log.technologyReportingParameters.task }}
-                </p>
-            </mat-card-content>
-        </mat-card>
-        <mat-card class="log-page-general-card">
-            <mat-card-title class="log-page-general-card-title">Issues</mat-card-title>
-            <mat-card-content>
-                <h2>Issues at workplace:</h2>
-                <p>
-                    {{ log.issueReportingParameters.generalIssue }}
-                </p>
-            </mat-card-content>
-            <mat-card-content>
-                <h2>General issues or comments:</h2>
-                <p>
-                    {{ log.issueReportingParameters.workPlaceIssue }}
-                </p>
-            </mat-card-content>
-        </mat-card>
+        <div class="log-page-general-card" *ngIf="log.internshipReportingParameters">
+            <div class="log-page-general-card-title">Internship Details</div>
+            <mat-card class="log-page-general-card-main">
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Employee Name:</p>
+                    <p class="log-page-general-card-main-column-content-big">
+                        {{ log.internshipReportingParameters.employeeName }}
+                    </p>
+                </div>
+                <div class="log-page-general-card-main-column-seperator"></div>
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Start Date:</p>
+                    <p class="log-page-general-card-main-column-content-big">
+                        {{ log.internshipReportingParameters.startDate | date: 'MMMM d'}}
+                    </p>
+                </div>
+                <div class="log-page-general-card-main-column-seperator"></div>
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">End Date:</p>
+                    <p class="log-page-general-card-main-column-content-big">
+                        {{ log.internshipReportingParameters.endDate | date: 'MMMM d' }}
+                    </p>
+                </div>
+            </mat-card>
+        </div>
+        <div class="log-page-general-card" *ngIf="log.technologyReportingParameters">
+            <div class="log-page-general-card-title">Assigned Tasks</div>
+            <mat-card class="log-page-general-card-main">
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Tasks Expectation:</p>
+                    <mat-chip-list class="log-page-general-card-main-column-content-chips">
+                        <mat-chip
+                            *ngIf="log.technologyReportingParameters.isTaskTechnical"
+                            class="tags-green"
+                        >
+                            As expected
+                        </mat-chip>
+                        <mat-chip
+                            *ngIf="!log.technologyReportingParameters.isTaskTechnical"
+                            class="tags-red"
+                        >
+                            Not as expected
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div class="log-page-general-card-main-column-seperator"></div>
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Actual Task Assigned:</p>
+                    <p class="log-page-general-card-main-column-content-normal">
+                        {{ log.technologyReportingParameters.task }}
+                    </p>
+                </div>
+                <div class="log-page-general-card-main-column-seperator"></div>
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Technologies Utilized or Provided:</p>
+                    <p class="log-page-general-card-main-column-content-normal">
+                        {{ log.technologyReportingParameters.technology }}
+                    </p>
+                </div>
+            </mat-card>
+        </div>
+        <div class="log-page-general-card" *ngIf="log.issueReportingParameters">
+            <div class="log-page-general-card-title">Work Place Issues</div>
+            <mat-card class="log-page-general-card-main">
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Work Place Concerns:</p>
+                    <p class="log-page-general-card-main-column-content-normal">
+                        {{ log.issueReportingParameters.workPlaceIssue }}
+                    </p>
+                </div>
+                <div class="log-page-general-card-main-column-seperator"></div>
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Other Comments:</p>
+                    <p class="log-page-general-card-main-column-content-normal">
+                        {{ log.issueReportingParameters.generalIssue }}
+                    </p>
+                </div>
+            </mat-card>
+        </div>
     </div>
 </div>
+<ng-template #loading>
+    <app-loading [loadingText]="'Fetching Log Details. Please wait...'"></app-loading>
+</ng-template>

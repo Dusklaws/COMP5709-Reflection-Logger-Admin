@@ -16,10 +16,33 @@ mat-card {
   border-radius: 15px;
 }
 
+
+
 $break-large: 2000px;
 $break-laptop: 1600px;
 $break-tablet: 1024px;
 $break-phone: 700px;
+
+.tags {
+  &-red {
+    background-color: #ff4d4d !important;
+    color: white !important;
+  }
+
+  &-green {
+    background-color: #00e673 !important;
+    color: white !important;
+  }
+
+  &-yellow {
+    background-color: #ffc508 !important;
+    color: white !important;
+  }
+
+  @media screen and (max-width: $break-tablet) {
+    margin: -5px 0 5px 10px;
+  }
+}
 
 @include mat-core();
 

@@ -31,7 +31,7 @@ const routes: Routes = [
     canActivate: [GeneralGuard]
   },
   {
-    path: 'log/:submissionTime',
+    path: 'log/:email/:submissionTime',
     component: LogPageComponent,
     canActivate: [GeneralGuard]
   },

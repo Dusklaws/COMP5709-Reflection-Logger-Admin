@@ -84,7 +84,7 @@
       }
 
       @media screen and (max-width: $break-laptop) and (min-width: $break-phone) {
-        width: 300px;
+        width: 275px;
       }
 
       @media screen and (min-width: $break-large) {
@@ -93,27 +93,6 @@
 
       &-header {
         justify-content: space-between;
-
-        &-tags {
-          &-red {
-            background-color: #ff4d4d !important;
-            color: white !important;
-          }
-
-          &-green {
-            background-color: #00e673 !important;
-            color: white !important;
-          }
-
-          &-yellow {
-            background-color: #ffc508 !important;
-            color: white !important;
-          }
-
-          @media screen and (max-width: $break-tablet) {
-            margin: -5px 0 5px 10px;
-          }
-        }
 
         @media screen and (max-width: $break-tablet) {
           flex-direction: column;

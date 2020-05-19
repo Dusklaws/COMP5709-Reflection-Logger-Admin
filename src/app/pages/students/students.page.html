@@ -72,10 +72,10 @@
                 <mat-card-header class="student-page-grid-card-header">
                     <mat-card-title>{{student.name}}</mat-card-title>
                     <mat-card-subtitle>{{student.email}}</mat-card-subtitle>
-                    <mat-chip-list class="student-page-grid-card-header-tags">
+                    <mat-chip-list>
                         <mat-chip
                             *ngIf="student.helpRequested"
-                            class="student-page-grid-card-header-tags-red"
+                            class="tags-red"
                             [removable]="true"
                             (removed)="removeHelp(student.email)"
                         >
@@ -84,9 +84,9 @@
                         </mat-chip>
                         <mat-chip [ngClass]="
                         {
-                            'student-page-grid-card-header-tags-green': student.average > 7,
-                            'student-page-grid-card-header-tags-yellow': student.average <= 7 && student.average >= 4,
-                            'student-page-grid-card-header-tags-red': student.average < 4
+                            'tags-green': student.average > 7,
+                            'tags-yellow': student.average <= 7 && student.average >= 4,
+                            'tags-red': student.average < 4
                         }
                     ">{{ student.average | number :'1.1-1'}}</mat-chip>
                     </mat-chip-list>

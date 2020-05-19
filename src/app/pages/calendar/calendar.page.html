@@ -49,9 +49,7 @@
                 <mat-card-subtitle>
                     Submitted On: {{ log.submissionTime | date: 'd LLL h:mm a' }}
                 </mat-card-subtitle>
-                <mat-card-subtitle>
-                    Summary: {{ log.dailySummary }}
-                </mat-card-subtitle>
+                <mat-card-subtitle>Summary: {{ log.dailySummary }}</mat-card-subtitle>
                 <mat-chip-list>
                     <mat-chip [ngClass]="
                         {
@@ -67,7 +65,7 @@
                     class="calendar-page-mobile-card-content-button"
                     mat-raised-button
                     color="primary"
-                    [routerLink]="'/log/' + log.submissionTime"
+                    [routerLink]="'/log/' + email + '/' + log.submissionTime"
                 >
                     View
                 </button>
@@ -103,7 +101,7 @@
                 <button
                     mat-raised-button
                     color="primary"
-                    [routerLink]="'/log/' + event.id"
+                    [routerLink]="'/log/' + email + '/' + event.meta.submissionTime"
                 >
                     View
                 </button>
