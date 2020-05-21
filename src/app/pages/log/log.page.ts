@@ -23,7 +23,7 @@ export class LogPageComponent implements OnInit {
         this.email = this.route.snapshot.paramMap.get('email');
         const submissionTime = this.route.snapshot.paramMap.get('submissionTime');
         this.log = await this.dataService.getLogBySubmissionTime(this.email, submissionTime);
-        this.title = `${this.log.studentType} Log`;
+        this.title = `${this.log.logType} Log`;
         this.isPageReady = true;
     }
 }

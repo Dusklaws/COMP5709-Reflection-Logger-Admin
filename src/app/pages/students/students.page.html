@@ -1,9 +1,12 @@
 <app-toolbar [title]="'Dashboard'"></app-toolbar>
 <div
     class="student-page"
-    *ngIf="isPageReady else loading"
+    *ngIf="isPageReady && userType !== 'non-authorized'"
 >
-    <div class="student-page-container">
+    <div
+        class="student-page-container"
+        *ngIf="userType === 'supervisor'"
+    >
         <mat-card class="student-page-container-card">
             <form class="student-page-container-card-form">
                 <div class="student-page-container-card-form-field">
@@ -94,7 +97,10 @@
                 <ng-container *ngIf="student.history && student.history.length > 0">
                     <app-chart [history]="student.history"></app-chart>
                 </ng-container>
-                <mat-card-content class="student-page-grid-card-content">
+                <mat-card-content
+                    class="student-page-grid-card-content"
+                    *ngIf="student.internshipDetails"
+                >
                     <div class="student-page-grid-card-content-column">
                         <span class="student-page-grid-card-content-header">Client:</span>
                         <span class="student-page-grid-card-content-text">
@@ -126,6 +132,11 @@
         </ng-container>
     </div>
 </div>
-<ng-template #loading>
-    <app-loading [loadingText]="'Fetching Students. Please wait...'"></app-loading>
-</ng-template>
+<app-error
+    *ngIf="isPageReady && userType === 'non-authorized'"
+    [errorText]="'Uh-oh look like your account has not been initialized. Please start submitting log as student or contact admin to become a superviosr'"
+></app-error>
+<app-loading
+    *ngIf="!isPageReady"
+    [loadingText]="'Fetching Students. Please wait...'"
+></app-loading>

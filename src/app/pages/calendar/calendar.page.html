@@ -4,7 +4,7 @@
 ></app-toolbar>
 <div
     class="calendar-page"
-    *ngIf="isPageReady else loading"
+    *ngIf="isPageReady"
 >
     <div class="calendar-page-monitor">
         <div class="calendar-page-monitor-header">
@@ -45,7 +45,7 @@
     >
         <mat-card class="calendar-page-mobile-card">
             <mat-card-header class="calendar-page-mobile-card-header">
-                <mat-card-title>{{ log.studentType | titlecase }} Log</mat-card-title>
+                <mat-card-title>{{ log.logType | titlecase }} Log</mat-card-title>
                 <mat-card-subtitle>
                     Submitted On: {{ log.submissionTime | date: 'd LLL h:mm a' }}
                 </mat-card-subtitle>
@@ -109,6 +109,7 @@
         </div>
     </ng-template>
 </div>
-<ng-template #loading>
-    <app-loading [loadingText]="'Fetching Logs. Please wait...'"></app-loading>
-</ng-template>
+<app-loading
+    *ngIf="!isPageReady"
+    [loadingText]="'Fetching Logs. Please wait...'"
+></app-loading>

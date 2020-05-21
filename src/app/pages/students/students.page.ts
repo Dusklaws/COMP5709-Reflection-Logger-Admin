@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild, QueryList, ViewChildren } from '@angular/
 import { ApiServce } from 'src/app/services/api.service';
 import { User } from 'src/app/typings/user';
 import { BaseChartDirective } from 'ng2-charts';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-students',
@@ -18,12 +19,14 @@ export class StudentsPageComponent implements OnInit {
     public minFilter = 0;
     public maxFilter = 10;
     public helpFilter = false;
+    public userType: string;
 
-    constructor(private readonly apiService: ApiServce) { }
+    constructor(private readonly apiService: ApiServce, private authService: AuthService) { }
 
     public async ngOnInit(): Promise<void> {
         this.fullStudents = await this.apiService.getListOfStudents();
         this.filterStudents();
+        this.userType = this.authService.user.type;
         this.isPageReady = true;
     }
 

@@ -5,6 +5,7 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 
 import { Log } from '../../typings/log';
 import { LogDataService } from 'src/app/services/logData.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-calendar',
@@ -31,7 +32,7 @@ export class CalendarPageComponent implements OnInit {
         for (const log of this.logs) {
             this.events.push({
                 start: new Date(log.submissionTime),
-                title: log.studentType,
+                title: log.logType,
                 meta: {
                     dailyRating: log.dailyRating,
                     dailySummary: log.dailySummary,
