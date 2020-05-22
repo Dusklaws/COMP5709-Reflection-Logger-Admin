@@ -29,7 +29,10 @@
         </mat-card>
     </div>
     <div class="log-page-general">
-        <div class="log-page-general-card" *ngIf="log.internshipReportingParameters">
+        <div
+            class="log-page-general-card"
+            *ngIf="log.internshipReportingParameters"
+        >
             <div class="log-page-general-card-title">Internship Details</div>
             <mat-card class="log-page-general-card-main">
                 <div class="log-page-general-card-main-column">
@@ -54,7 +57,10 @@
                 </div>
             </mat-card>
         </div>
-        <div class="log-page-general-card" *ngIf="log.technologyReportingParameters">
+        <div
+            class="log-page-general-card"
+            *ngIf="log.technologyReportingParameters"
+        >
             <div class="log-page-general-card-title">Assigned Tasks</div>
             <mat-card class="log-page-general-card-main">
                 <div class="log-page-general-card-main-column">
@@ -90,7 +96,10 @@
                 </div>
             </mat-card>
         </div>
-        <div class="log-page-general-card" *ngIf="log.issueReportingParameters">
+        <div
+            class="log-page-general-card"
+            *ngIf="log.issueReportingParameters"
+        >
             <div class="log-page-general-card-title">Work Place Issues</div>
             <mat-card class="log-page-general-card-main">
                 <div class="log-page-general-card-main-column">
@@ -105,6 +114,100 @@
                     <p class="log-page-general-card-main-column-content-normal">
                         {{ log.issueReportingParameters.generalIssue }}
                     </p>
+                </div>
+            </mat-card>
+        </div>
+
+
+
+
+
+        <div
+            class="log-page-general-card"
+            *ngIf="log.workReportingParameters"
+        >
+            <div class="log-page-general-card-title">Assigned Tasks:</div>
+            <mat-card class="log-page-general-card-main">
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Recent Tasks:</p>
+                    <p class="log-page-general-card-main-column-content-normal">{{ log.workReportingParameters.task }}</p>
+                </div>
+                <div class="log-page-general-card-main-column-seperator"></div>
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Deadline:</p>
+                    <p
+                        class="log-page-general-card-main-column-content-big"
+                        *ngIf="log.workReportingParameters.upcomingDeadline"
+                    >
+                        {{ log.workReportingParameters.upcomingDeadline | date: 'MMMM d' }}
+                    </p>
+                    <p
+                        class="log-page-general-card-main-column-content-big"
+                        *ngIf="!log.workReportingParameters.upcomingDeadline"
+                    >
+                        --
+                    </p>
+                </div>
+            </mat-card>
+        </div>
+        <div
+            class="log-page-general-card"
+            *ngIf="log.helpReportingParameters"
+        >
+            <div class="log-page-general-card-title">General Well Being:</div>
+            <mat-card class="log-page-general-card-main">
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Challenges:</p>
+                    <p class="log-page-general-card-main-column-content-small">
+                        {{ log.helpReportingParameters.challenges }}
+                    </p>
+                </div>
+                <div class="log-page-general-card-main-column-seperator"></div>
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Resource Request:</p>
+                    <p class="log-page-general-card-main-column-content-small">
+                        {{ log.helpReportingParameters.resources  }}
+                    </p>
+                </div>
+                <div class="log-page-general-card-main-column-seperator"></div>
+                <div class="log-page-general-card-main-column">
+                    <p class="log-page-general-card-main-column-header">Support Provided By Internship:</p>
+                    <mat-chip-list class="log-page-general-card-main-column-content-chips">
+                        <mat-chip
+                            *ngIf="log.helpReportingParameters.support"
+                            class="tags-green"
+                        >
+                            Sufficient Support
+                        </mat-chip>
+                        <mat-chip
+                            *ngIf="!log.helpReportingParameters.support"
+                            class="tags-red"
+                        >
+                            Insufficient Support
+                        </mat-chip>
+                        <mat-chip
+                            *ngIf="log.helpReportingParameters.meeting"
+                            class="tags-red"
+                        >
+                            Help Requested
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </mat-card>
+        </div>
+
+
+
+
+
+        <div
+            class="log-page-general-card"
+            *ngIf="log.checkUpReportingParameters"
+        >
+            <div class="log-page-general-card-title">Daily Check Up</div>
+            <mat-card class="log-page-general-card-main">
+                <div class="log-page-general-card-main-column">
+                    <app-radar [logParams]="log.checkUpReportingParameters"></app-radar>
                 </div>
             </mat-card>
         </div>

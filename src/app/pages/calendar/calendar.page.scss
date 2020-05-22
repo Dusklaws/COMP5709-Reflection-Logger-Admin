@@ -51,6 +51,8 @@
     }
 
     &-card {
+      margin: 20px 0;
+
       &-header {
         display: flex;
         justify-content: space-between;
@@ -61,8 +63,15 @@
           width: 100%;
         }
       }
+
+      &-filter-header {
+        justify-content: center;
+      }
+
+      &-filter-content {
+        text-align: center;
+      }
     }
   }
 
 }
-

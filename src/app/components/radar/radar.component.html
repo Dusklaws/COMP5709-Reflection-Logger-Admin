@@ -1,0 +1,31 @@
+<div>
+    <div>
+        <div style="display: block">
+            <canvas
+                baseChart
+                [datasets]="radarChartData"
+                [options]="radarChartOptions"
+                [labels]="radarChartLabels"
+                [chartType]="'radar'"
+            >
+            </canvas>
+        </div>
+    </div>
+    <div class="radar-chart-support">
+        <p class="radar-chart-support-text">
+            Ability = Student is confident in their ability to complete assigned tasks
+        </p>
+        <p class="radar-chart-support-text">
+            Tools = The tools provided are sufficient to complete such tasks
+        </p>
+        <p class="radar-chart-support-text">
+            Support = Student is happy with the level support being provided
+        </p>
+        <p class="radar-chart-support-text">
+            Experience = Student find the internship insightful and are gaining important experience
+        </p>
+        <p class="radar-chart-support-text">
+            Happiness = Student enjoy the current internship environment they are in
+        </p>
+    </div>
+</div>

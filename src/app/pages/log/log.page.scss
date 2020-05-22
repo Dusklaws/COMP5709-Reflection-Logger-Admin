@@ -43,10 +43,9 @@
   }
 
   &-general {
-    margin-top: 20px;
 
     &-card {
-      margin: 20px auto;
+      margin: 30px auto;
 
       &-title {
         width: 100%;
@@ -89,6 +88,12 @@
             text-align: start;
             max-width: 300px;
             margin: 20px auto;
+          }
+
+          &-content-small {
+            text-align: start;
+            max-width: 250px;
+            margin: 10px auto;
           }
 
           &-content-chips {

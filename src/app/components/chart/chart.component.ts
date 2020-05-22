@@ -47,7 +47,7 @@ export class ChartComponent implements OnInit {
                 chartData.data.push(h.rating);
                 this.chartLabels.push(label);
             }
-            chartData.pointBackgroundColor = ' rgba(0, 0, 255, 0.6)';
+            chartData.pointBackgroundColor = 'rgba(0, 0, 255, 0.6)';
             chartData.pointBorderColor = ' blue';
             chartData.borderColor = 'blue';
             chartData.backgroundColor = `rgba(0, 0, 255, 0.6)`;

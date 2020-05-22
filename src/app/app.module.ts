@@ -25,9 +25,9 @@ import { ErrorComponent } from './components/error/error.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { LoginPageComponent } from './pages/login/login.page';
 import { LogPageComponent } from './pages/log/log.page';
+import { RadarComponent } from './components/radar/radar.component';
 import { StudentsPageComponent } from './pages/students/students.page';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-
 
 @NgModule({
   imports: [
@@ -57,6 +57,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     LoadingComponent,
     LoginPageComponent,
     LogPageComponent,
+    RadarComponent,
     StudentsPageComponent,
     ToolbarComponent
   ],

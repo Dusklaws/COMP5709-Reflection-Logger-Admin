@@ -39,38 +39,55 @@
         >
         </mwl-calendar-month-view>
     </div>
-    <div
-        *ngFor="let log of logs"
-        class="calendar-page-mobile"
-    >
+    <div class="calendar-page-mobile">
         <mat-card class="calendar-page-mobile-card">
-            <mat-card-header class="calendar-page-mobile-card-header">
-                <mat-card-title>{{ log.logType | titlecase }} Log</mat-card-title>
-                <mat-card-subtitle>
-                    Submitted On: {{ log.submissionTime | date: 'd LLL h:mm a' }}
-                </mat-card-subtitle>
-                <mat-card-subtitle>Summary: {{ log.dailySummary }}</mat-card-subtitle>
-                <mat-chip-list>
-                    <mat-chip [ngClass]="
+            <mat-card-header class="calendar-page-mobile-card-filter-header">
+                <mat-card-title>Filter by month:</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="calendar-page-mobile-card-filter-content">
+                <mat-form-field>
+                    <select
+                        matNativeControl
+                        [(ngModel)]="monthFilter"
+                        (ngModelChange)="filterLogs()"
+                    >
+                        <ng-container *ngFor="let month of monthFilters">
+                            <option value="{{ month }}">{{ month }}</option>
+                        </ng-container>
+                    </select>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+        <ng-container *ngFor="let log of filteredLog">
+            <mat-card class="calendar-page-mobile-card">
+                <mat-card-header class="calendar-page-mobile-card-header">
+                    <mat-card-title>{{ log.logType | titlecase }} Log</mat-card-title>
+                    <mat-card-subtitle>
+                        Submitted On: {{ log.submissionTime | date: 'd LLL h:mm a' }}
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>Summary: {{ log.dailySummary }}</mat-card-subtitle>
+                    <mat-chip-list>
+                        <mat-chip [ngClass]="
                         {
                             'tags-green': log.dailyRating > 7,
                             'tags-yellow': log.dailyRating <= 7 && log.dailyRating >= 4,
                             'tags-red': log.dailyRating < 4
                         }
                     ">{{ log.dailyRating }}</mat-chip>
-                </mat-chip-list>
-            </mat-card-header>
-            <mat-card-content>
-                <button
-                    class="calendar-page-mobile-card-content-button"
-                    mat-raised-button
-                    color="primary"
-                    [routerLink]="'/log/' + email + '/' + log.submissionTime"
-                >
-                    View
-                </button>
-            </mat-card-content>
-        </mat-card>
+                    </mat-chip-list>
+                </mat-card-header>
+                <mat-card-content>
+                    <button
+                        class="calendar-page-mobile-card-content-button"
+                        mat-raised-button
+                        color="primary"
+                        [routerLink]="'/log/' + email + '/' + log.submissionTime"
+                    >
+                        View
+                    </button>
+                </mat-card-content>
+            </mat-card>
+        </ng-container>
     </div>
     <ng-template
         #calendarCellTemplate
