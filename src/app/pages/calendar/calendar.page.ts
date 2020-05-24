@@ -71,8 +71,8 @@ export class CalendarPageComponent implements OnInit {
                 id: log.submissionTime
             });
         }
-        this.dataService.initLogs(this.logs);
-        this.filterLogs()
+        this.dataService.initLogs(this.logs, this.email);
+        this.filterLogs();
         this.isPageReady = true;
     }
 }

@@ -11,7 +11,6 @@ import { AuthService } from 'src/app/services/auth.service';
     styleUrls: ['./students.page.scss']
 })
 export class StudentsPageComponent implements OnInit {
-
     public isPageReady = false;
     public students: User[];
     public fullStudents: User[];

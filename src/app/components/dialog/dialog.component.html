@@ -1,0 +1,258 @@
+<h1 mat-dialog-title>Edit Log</h1>
+<div mat-dialog-content>
+    <div
+        [ngSwitch]="log.logType"
+        class="dialog-form"
+    >
+        <div class="dialog-form-rating">
+            <p class="dialog-form-rating-header">Daily Rating (This will not update history on dashboard):</p>
+            <div class="dialog-form-rating-slider">
+                1
+                <mat-slider
+                    class="dialog-form-rating-slider-slide"
+                    thumbLabel
+                    min="1"
+                    max="10"
+                    step="1"
+                    [(ngModel)]="log.dailyRating"
+                ></mat-slider>
+                10
+            </div>
+        </div>
+        <mat-form-field>
+            <mat-label>Daily Summary:</mat-label>
+            <input
+                matInput
+                [(ngModel)]="log.dailySummary"
+            >
+        </mat-form-field>
+        <ng-container *ngSwitchCase="'full'">
+            <mat-form-field>
+                <mat-label>
+                    What kind of tasks have you been assigned recently?
+                </mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="log.workReportingParameters.task"
+                ></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Task Deadline:</mat-label>
+                <input
+                    matInput
+                    [matDatepicker]="deadlinePicker"
+                    [(ngModel)]="deadlineDate"
+                >
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="deadlinePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #deadlinePicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>What kind of challenges are you facing?</mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="log.helpReportingParameters.challenges"
+                ></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>
+                    Do you need any resource that we can provide for you?
+                </mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="log.helpReportingParameters.resources"
+                ></textarea>
+            </mat-form-field>
+            <mat-slide-toggle
+                class="dialog-form-toggle"
+                [(ngModel)]="log.helpReportingParameters.support"
+            >
+                I am getting sufficient support
+            </mat-slide-toggle>
+            <mat-slide-toggle
+                class="dialog-form-toggle"
+                [(ngModel)]="log.helpReportingParameters.meeting"
+            >
+                I need help from the supervisor
+            </mat-slide-toggle>
+        </ng-container>
+        <ng-container *ngSwitchCase="'check-up'">
+            <div class="dialog-form-rating">
+                <p class="dialog-form-rating-header">
+                    Student is confident in their ability to complete assigned tasks
+                </p>
+                <div class="dialog-form-rating-slider">
+                    1
+                    <mat-slider
+                        class="dialog-form-rating-slider-slide"
+                        thumbLabel
+                        min="1"
+                        max="5"
+                        step="1"
+                        [(ngModel)]="log.checkUpReportingParameters.ability"
+                    ></mat-slider>
+                    5
+                </div>
+            </div>
+            <div class="dialog-form-rating">
+                <p class="dialog-form-rating-header">
+                    The tools provided are sufficient to complete such tasks
+                </p>
+                <div class="dialog-form-rating-slider">
+                    1
+                    <mat-slider
+                        class="dialog-form-rating-slider-slide"
+                        thumbLabel
+                        min="1"
+                        max="5"
+                        step="1"
+                        [(ngModel)]="log.checkUpReportingParameters.tools"
+                    ></mat-slider>
+                    5
+                </div>
+            </div>
+            <div class="dialog-form-rating">
+                <p class="dialog-form-rating-header">
+                    Student is happy with the level support being provided
+                </p>
+                <div class="dialog-form-rating-slider">
+                    1
+                    <mat-slider
+                        class="dialog-form-rating-slider-slide"
+                        thumbLabel
+                        min="1"
+                        max="5"
+                        step="1"
+                        [(ngModel)]="log.checkUpReportingParameters.support"
+                    ></mat-slider>
+                    5
+                </div>
+            </div>
+            <div class="dialog-form-rating">
+                <p class="dialog-form-rating-header">
+                    Student find the internship insightful and are gaining important experience
+                </p>
+                <div class="dialog-form-rating-slider">
+                    1
+                    <mat-slider
+                        class="dialog-form-rating-slider-slide"
+                        thumbLabel
+                        min="1"
+                        max="5"
+                        step="1"
+                        [(ngModel)]="log.checkUpReportingParameters.learning"
+                    ></mat-slider>
+                    5
+                </div>
+            </div>
+            <div class="dialog-form-rating">
+                <p class="dialog-form-rating-header">
+                    Student enjoy the current internship environment they are in
+                </p>
+                <div class="dialog-form-rating-slider">
+                    1
+                    <mat-slider
+                        class="dialog-form-rating-slider-slide"
+                        thumbLabel
+                        min="1"
+                        max="5"
+                        step="1"
+                        [(ngModel)]="log.checkUpReportingParameters.likeness"
+                    ></mat-slider>
+                    5
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'initial'">
+            <mat-form-field>
+                <mat-label>Internship employee name:</mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="log.internshipReportingParameters.employeeName"
+                ></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Internship start date:</mat-label>
+                <input
+                    matInput
+                    [matDatepicker]="startDatePicker"
+                    [(ngModel)]="startDate"
+                >
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="startDatePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #startDatePicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Internship end date:</mat-label>
+                <input
+                    matInput
+                    [matDatepicker]="endDatePicker"
+                    [(ngModel)]="endDate"
+                >
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="endDatePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker
+                    #endDatePicker
+                    [startAt]
+                ></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Task assigned:</mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="log.technologyReportingParameters.task"
+                ></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Technology used:</mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="log.technologyReportingParameters.technology"
+                ></textarea>
+            </mat-form-field>
+            <mat-slide-toggle
+                class="dialog-form-toggle"
+                [(ngModel)]="log.technologyReportingParameters.isTaskTechnical"
+            >
+                The task is what I applied for
+            </mat-slide-toggle>
+            <mat-form-field>
+                <mat-label>Work place issue:</mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="log.issueReportingParameters.workPlaceIssue"
+                ></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>General comments:</mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="log.issueReportingParameters.generalIssue"
+                ></textarea>
+            </mat-form-field>
+        </ng-container>
+    </div>
+</div>
+<mat-dialog-actions align="end">
+    <button
+        mat-button
+        (click)="close()"
+    >
+        Cancel
+    </button>
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="save()"
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+    >
+        Save
+    </button>
+</mat-dialog-actions>

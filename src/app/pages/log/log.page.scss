@@ -6,6 +6,10 @@
   margin: 30px auto;
   width: 50%;
 
+  &-edit {
+    margin: 20px 0 0 auto;
+  }
+
   @media screen and (max-width: $break-laptop) {
     width: 75%;
   }

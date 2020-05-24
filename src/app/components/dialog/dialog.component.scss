@@ -1,0 +1,26 @@
+.dialog-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &-toggle{
+    margin-bottom: 20px;
+  }
+
+  &-rating {
+    &-header {
+      color: #a1a1a1;
+      margin-bottom: -10px;
+      font-size: 11px;
+    }
+
+    &-slider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &-slide {
+          flex-grow: 1;
+      }
+    }
+  }
+}

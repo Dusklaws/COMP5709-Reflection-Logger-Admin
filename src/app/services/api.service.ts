@@ -30,6 +30,10 @@ export class ApiServce {
         return this.get<Log[]>('logs/' + email);
     }
 
+    public async updateLog(log: Log): Promise<void> {
+        return this.post<void>('log', log);
+    }
+
     private async get<T>(urlSuffix: string): Promise<T> {
         await this.authService.updateUser();
         return this.httpClient.get<T>(

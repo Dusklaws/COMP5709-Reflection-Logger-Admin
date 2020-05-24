@@ -117,11 +117,6 @@
                 </div>
             </mat-card>
         </div>
-
-
-
-
-
         <div
             class="log-page-general-card"
             *ngIf="log.workReportingParameters"
@@ -195,11 +190,6 @@
                 </div>
             </mat-card>
         </div>
-
-
-
-
-
         <div
             class="log-page-general-card"
             *ngIf="log.checkUpReportingParameters"
@@ -212,6 +202,16 @@
             </mat-card>
         </div>
     </div>
+    <button
+        *ngIf="userType === 'student'"
+        mat-fab
+        color="primary"
+        aria-label="Edit"
+        class="log-page-edit"
+        (click)="editLog()"
+    >
+        <mat-icon>create</mat-icon>
+    </button>
 </div>
 <ng-template #loading>
     <app-loading [loadingText]="'Fetching Log Details. Please wait...'"></app-loading>

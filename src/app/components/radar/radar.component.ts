@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ChartDataSets, ChartType, RadialChartOptions } from 'chart.js';
-import { Label } from 'ng2-charts';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { ChartDataSets, RadialChartOptions } from 'chart.js';
+import { Label, BaseChartDirective } from 'ng2-charts';
 import { Log } from 'src/app/typings/log';
 
 @Component({
@@ -10,6 +10,8 @@ import { Log } from 'src/app/typings/log';
 })
 export class RadarComponent implements OnInit {
     @Input() logParams: Log.CheckUpReportingParameters;
+    @ViewChild(BaseChartDirective) chart: BaseChartDirective;
+
 
     public radarChartOptions: RadialChartOptions = {
         responsive: true,
@@ -40,7 +42,11 @@ export class RadarComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() {
+    public ngOnInit() {
+        this.updateData();
+    }
+
+    public updateData() {
         this.radarChartData = [
             {
                 data: [
@@ -57,5 +63,4 @@ export class RadarComponent implements OnInit {
             },
         ];
     }
-
 }
