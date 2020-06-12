@@ -132,13 +132,13 @@
                     <p class="log-page-general-card-main-column-header">Deadline:</p>
                     <p
                         class="log-page-general-card-main-column-content-big"
-                        *ngIf="log.workReportingParameters.upcomingDeadline"
+                        *ngIf="log.workReportingParameters.isUpcomingDeadline"
                     >
                         {{ log.workReportingParameters.upcomingDeadline | date: 'MMMM d' }}
                     </p>
                     <p
                         class="log-page-general-card-main-column-content-big"
-                        *ngIf="!log.workReportingParameters.upcomingDeadline"
+                        *ngIf="!log.workReportingParameters.isUpcomingDeadline"
                     >
                         --
                     </p>
